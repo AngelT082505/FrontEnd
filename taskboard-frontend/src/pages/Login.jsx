@@ -26,7 +26,7 @@ export default function Login() {
 
       if (res.ok) {
         const data = await res.json();
-        login({ token: data.token, userId: data.userId, userRole: data.role }); // Asegúrate que backend devuelva 'role'
+        login({ token: data.token, userId: data.userId, userRole: data.role });
         setMessage("Login successful!");
         setError(null);
         navigate("/tasks");
