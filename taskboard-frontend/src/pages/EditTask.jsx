@@ -24,7 +24,7 @@ export default function EditTask() {
       setLoading(false);
       return;
     }
-    fetch(`http://localhost:8080/api/task/${taskId}`, {
+    fetch(`https://taskboard-koyv.onrender.com/api/task/${taskId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

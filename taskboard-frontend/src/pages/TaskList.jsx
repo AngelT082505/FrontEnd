@@ -19,7 +19,7 @@ export default function TaskList() {
     }
 
     try {
-      const res = await fetch("http://localhost:8080/api/task", {
+      const res = await fetch("https://taskboard-koyv.onrender.com/api/task", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
