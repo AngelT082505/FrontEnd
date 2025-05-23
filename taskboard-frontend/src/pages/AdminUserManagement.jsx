@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Table, Button, Alert, Spinner, Container } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
+import API_BASE_URL from "../api";
 
 export default function AdminUserList() {
   const { token } = useContext(AuthContext);
@@ -15,7 +16,7 @@ export default function AdminUserList() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("https://taskboard-koyv.onrender.com/api/admin/user", {
+      const res = await fetch(`${API_BASE_URL}/admin/user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -35,7 +36,7 @@ export default function AdminUserList() {
 
   const toggleBlockUser = async (id, currentStatus) => {
     try {
-      const res = await fetch(`https://taskboard-koyv.onrender.com/api/admin/user/${id}/block?active=${!currentStatus}`, {
+      const res = await fetch(`${API_BASE_URL}/admin/user/${id}/block?active=${!currentStatus}`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -54,7 +55,7 @@ export default function AdminUserList() {
   const deleteUser = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user and their tasks?")) return;
     try {
-      const res = await fetch(`https://taskboard-koyv.onrender.com/api/admin/user/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/admin/user/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

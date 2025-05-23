@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Form, Button, Container, Alert, Spinner } from "react-bootstrap";
+import API_BASE_URL from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -24,7 +25,7 @@ export default function EditTask() {
       setLoading(false);
       return;
     }
-    fetch(`https://taskboard-koyv.onrender.com/api/task/${taskId}`, {
+    fetch(`${API_BASE_URL}/task/${taskId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -65,7 +66,7 @@ export default function EditTask() {
     };
 
     try {
-      const res = await fetch(`https://taskboard-koyv.onrender.com/api/task/${taskId}`, {
+      const res = await fetch(`${API_BASE_URL}/task/${taskId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

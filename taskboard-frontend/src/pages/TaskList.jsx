@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Container, Table, Spinner, Alert, Button } from "react-bootstrap";
+import API_BASE_URL from "../api";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -19,7 +20,7 @@ export default function TaskList() {
     }
 
     try {
-      const res = await fetch("https://taskboard-koyv.onrender.com/api/task", {
+      const res = await fetch(`${API_BASE_URL}/task`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -54,7 +55,7 @@ export default function TaskList() {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
 
     try {
-      const res = await fetch(`https://taskboard-koyv.onrender.com/api/task/${taskId}`, {
+      const res = await fetch(`${API_BASE_URL}/task/${taskId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import API_BASE_URL from "../api";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 
@@ -27,12 +28,11 @@ export default function CreateTask() {
       dateEnd: dateEnd,
       status,
       urgency,
-      // Si tu backend no necesita user_id en body, quítalo
       user_id: userId,
     };
 
     try {
-      const res = await fetch("https://taskboard-koyv.onrender.com/api/task", {
+      const res = await fetch(`${API_BASE_URL}/task`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

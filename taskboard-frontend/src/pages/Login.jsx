@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 import { Form, Button, Alert, Card } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 
@@ -18,7 +19,7 @@ export default function Login() {
     const payload = { usernameOrEmail, password };
 
     try {
-      const res = await fetch("https://taskboard-koyv.onrender.com/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE_URL from "../api";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 
 export default function Register() {
@@ -14,7 +15,7 @@ export default function Register() {
     const payload = { username, email, password };
 
     try {
-      const res = await fetch("https://taskboard-koyv.onrender.com/api/auth/register", {
+      const res = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
